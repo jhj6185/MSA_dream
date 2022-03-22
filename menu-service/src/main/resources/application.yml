@@ -1,4 +1,5 @@
-# eureka 설정, devtools : git에 있음.(https://github.com/JongbaekKIm/Dream_MSA.git)
+# 외부 : eureka
+
 server:
   port: 8001
 

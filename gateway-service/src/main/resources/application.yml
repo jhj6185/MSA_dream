@@ -1,4 +1,5 @@
-# eureka, routing, security, management 설정은 git에 있음.(https://github.com/JongbaekKIm/Dream_MSA.git)
+# 외부 : eureka, gateway routes, security 설정
+# 내부 : 
 server:
   port: 8000
 
@@ -7,6 +8,14 @@ spring:
    name: gateway-service  # git에 있는 확장자 제외한 설정파일 이름.
   config:              # gradle에 config 추가.
    import: optional:configserver:http://localhost:8888  # config 서버 위치
+   use-legacy-processing: true #unable to load config data~ 오류 발생시 사용
+   
+# actuator를 이용하여 서버 재시작 없이 변경내용 반영 가능하게 함.
+management:
+  endpoints:
+   web:
+    exposure:
+     include: refresh     
          
     
 ##외부
@@ -86,10 +95,5 @@ spring:
 #            authorization-grant-type: authorization_code
 #            redirect-uri: '{baseUrl}/login/oauth2/code/keycloak'
 
-# actuator를 이용하여 서버 재시작 없이 변경내용 반영 가능하게 함. (이거는 여기에 있어야할 내용)
-#management:
-#  endpoints:
-#   web:
-#    exposure:
-#     include: refresh  
+
 
